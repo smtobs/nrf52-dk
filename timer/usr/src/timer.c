@@ -9,6 +9,16 @@ static bool StartTimer(timer_obj *, const char *);
 static bool StopTimer(timer_obj *this, const char *act_name);
 static void RemoveTimerObj(timer_obj *);
 
+typedef struct timer_info
+{
+     const nrf_drv_timer_t instance;
+     const char *name;
+     uint32_t ms;
+     uint32_t ticks;
+     uint32_t cc_channel;
+     uint32_t clear_mask;
+}timer_info;
+
 static timer_info private[MAX_TIMER_INFO] =
 {
      {
